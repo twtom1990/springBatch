@@ -11,11 +11,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Date: 2020-02-16
  * Time: 16:56
  */
+//@EnableBatchProcessing(modular=true)
 @EnableBatchProcessing
-//@ComponentScan
 @SpringBootApplication
 public class App {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
     }
 }
+
+
