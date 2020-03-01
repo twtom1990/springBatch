@@ -34,12 +34,6 @@ import java.util.Map;
  */
 @Configuration
 @EnableTransactionManagement
-//@DependsOn("transactionManager")
-//@EnableJpaRepositories(
-//        entityManagerFactoryRef = "entityManagerFactoryBatch",//配置连接工厂 entityManagerFactory
-//        transactionManagerRef = "transactionManager", //配置 事物管理器  transactionManager
-//        basePackages = "com.tom.batch.multiWrite.repository.batch"//设置dao（repo）所在位置
-//)
 @EnableJpaRepositories(
         entityManagerFactoryRef = "entityManagerFactoryBatch",//配置连接工厂 entityManagerFactory
         transactionManagerRef = "transactionManagerBatch", //配置 事物管理器  transactionManager
@@ -87,8 +81,6 @@ public class BatchDataSourceConfig {
 
     private Map<String, String> getVendorProperties(DataSource dataSource)  {
         Map<String, String> properties =  jpaProperties.getProperties();
-//        properties.put("hibernate.transaction.jta.platform", AtomikosJtaPlatform.class.getName());
-//        properties.put("javax.persistence.transactionType", "JTA");
         log.info("batchDataSourceConfig---Start");
         log.info(jpaProperties.getProperties().toString());
         log.info("batchDataSourceConfig---End");

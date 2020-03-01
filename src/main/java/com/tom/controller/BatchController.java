@@ -1,5 +1,6 @@
 package com.tom.controller;
 
+import com.tom.service.BatchService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
@@ -20,7 +21,7 @@ import java.util.Date;
 @RestController
 @RequestMapping("/api/v1")
 @Slf4j
-public class batchController {
+public class BatchController {
 
     @Autowired
     JobLauncher jobLauncher;
@@ -30,6 +31,10 @@ public class batchController {
 
     @Autowired
     private Job multiWriteJob;
+
+    @Autowired
+    private BatchService batchService;
+
 
     @GetMapping("/readFile1Job/{type}")
     public String readFileController(@PathVariable(name = "type") String type , @RequestParam(name = "date") String date) {
@@ -62,7 +67,9 @@ public class batchController {
     }
 
     @GetMapping("/test")
-    public String test() {
+    public String restTemplateTest() {
+        batchService.postData();
         return "success";
+//        return "success";
     }
 }
